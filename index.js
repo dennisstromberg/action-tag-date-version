@@ -63,7 +63,7 @@ async function getNextVersionTag({ prerelease }) {
   let previousVersionTags = allTags
     .map(processVersion)
     .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b));
+    .sort(semver.compare);
 
   return prerelease
     ? getPrereleaseVersion(previousVersionTags, prerelease)
